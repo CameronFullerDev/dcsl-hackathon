@@ -27,5 +27,20 @@ namespace OneBeyondHackathon.Logic.Service
                 })
                 .ToListAsync();
         }
+
+        public async Task ShareQuoteAsync(Guid id)
+        {
+            var quoteContent = await _context.Quotes
+                .Where(quote => quote.Id == id)
+                .Select(quote => quote.Quote)
+                .FirstOrDefaultAsync();
+
+            if (string.IsNullOrEmpty(quoteContent))
+            {
+                return;
+            }
+
+            // TODO Share quote content.
+        }
     }
 }

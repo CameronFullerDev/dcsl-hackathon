@@ -18,5 +18,9 @@ namespace OneBeyondHackathon.WebApi.Controllers
         [HttpGet]
         public Task<IEnumerable<QuoteDTO>> GetQuotes([FromQuery]int count = 10)
             => _quoteService.GetQuotesAsync(count);
+
+        [HttpPost("Share")]
+        public Task ShareQuoteAsync([FromQuery] Guid id)
+            => _quoteService.ShareQuoteAsync(id);
     }
 }
