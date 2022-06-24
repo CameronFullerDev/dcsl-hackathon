@@ -9,6 +9,8 @@ namespace OneBeyondHackathon.Logic.Service
     {
         private readonly HttpClient _httpClient;
 
+        private const string _webUrl = "https://keep-dev-calm-57ydlh6xx-ardguezsoc.vercel.app/";
+
         public LogicAppService(HttpClient httpClient)
         {
             _httpClient = httpClient;
@@ -16,7 +18,7 @@ namespace OneBeyondHackathon.Logic.Service
 
         public async Task PostToSlack(string content)
         {
-            var body = new { content, url = "uuu" };
+            var body = new { content, url = _webUrl };
             var response = await _httpClient.PostAsync(
             "",
             new StringContent(
