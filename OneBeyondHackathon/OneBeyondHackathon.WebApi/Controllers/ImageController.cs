@@ -15,9 +15,12 @@ namespace OneBeyondHackathon.WebApi.Controllers
             _imageService = imageService;
         }
 
+        [HttpPost("share/{id}")]
+        public void Share(Guid id)
+            => _imageService.ShareImageAsync(id);
+
         [HttpGet]
         public Task<ImageDTO?> GetRandomImageAsync()
             => _imageService.GetRandomImageAsync();
-
     }
 }
