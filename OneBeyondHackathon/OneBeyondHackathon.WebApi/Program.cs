@@ -16,6 +16,15 @@ builder.Services.AddDbContext<OneBeyondHackathon.Logic.Storage.DatabaseContext>(
 // Add a service to DI
 builder.Services.AddTransient<IQuoteService, QuoteService>();
 builder.Services.AddTransient<IImageService, ImageService>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder => {
+        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -24,6 +33,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors();
 
 app.UseHttpsRedirection();
 
