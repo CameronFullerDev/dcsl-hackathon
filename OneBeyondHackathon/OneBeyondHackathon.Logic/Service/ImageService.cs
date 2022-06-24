@@ -38,5 +38,20 @@ namespace OneBeyondHackathon.Logic.Service
                 })
                 .FirstOrDefaultAsync();
         }
+
+        public async Task ShareImageAsync(Guid id)
+        {
+            var imageUrl = await _context.Images
+                .Where(image => image.Id == id)
+                .Select(image => image.Url)
+                .FirstOrDefaultAsync();
+
+            if (string.IsNullOrEmpty(imageUrl))
+            {
+                return;
+            }
+
+            // TODO Share image url.
+        }
     }
 }
