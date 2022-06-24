@@ -7,10 +7,24 @@ namespace OneBeyondHackathon.Logic.Service
     public sealed class ImageService : IImageService
     {
         private readonly DatabaseContext _context;
+        private readonly ILogicAppService _logicAppService;
 
-        public ImageService(DatabaseContext context)
+        public ImageService(
+            DatabaseContext context,
+            ILogicAppService logicAppService)
         {
             _context = context;
+            _logicAppService = logicAppService;
+        }
+
+        public async Task Share(Guid id)
+        {
+            var image = await _context.Set<ImageEntity>().FirstOrDefaultAsync(image => image.Id == id);
+            if (image == null)
+            {
+                throw new Exception($"Can't find image {id}.");
+            }
+            return _logicAppService.PostToSlack(image.Url);
         }
 
         public async Task<ImageDTO?> GetRandomImageAsync()
