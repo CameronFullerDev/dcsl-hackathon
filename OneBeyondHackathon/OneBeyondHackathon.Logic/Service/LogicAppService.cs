@@ -9,7 +9,7 @@ namespace OneBeyondHackathon.Logic.Service
     {
         private readonly HttpClient _httpClient;
 
-        private const string _webUrl = "https://keep-dev-calm-57ydlh6xx-ardguezsoc.vercel.app/";
+        private const string _webUrl = "https://keep-dev-calm-cfylkxhyq-ardguezsoc.vercel.app/";
 
         public LogicAppService(HttpClient httpClient)
         {
