@@ -24,6 +24,7 @@ namespace OneBeyondHackathon.Logic.Service
                     Quote = x.Quote,
                     QuoteDate = x.QuoteDate
                 })
+                .OrderBy(x => Guid.NewGuid())
                 .ToListAsync();
         }
     }
