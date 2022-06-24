@@ -13,12 +13,13 @@ namespace OneBeyondHackathon.Logic.Service
             _context = context;
         }
 
-        public async Task<ImageDTO> GetRandomImageAsync()
+        public async Task<ImageDTO?> GetRandomImageAsync()
         {
             return await _context.Images
                 .OrderBy(x => Guid.NewGuid())
                 .Select(x => new ImageDTO
                 {
+                    Id = x.Id,
                     Url = x.Url,
                 })
                 .FirstOrDefaultAsync();

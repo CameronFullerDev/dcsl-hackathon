@@ -4,6 +4,6 @@ namespace OneBeyondHackathon.Logic.Service
 {
     public interface IImageService
     {
-        Task<ImageDTO> GetRandomImageAsync();
+        Task<ImageDTO?> GetRandomImageAsync();
     }
 }

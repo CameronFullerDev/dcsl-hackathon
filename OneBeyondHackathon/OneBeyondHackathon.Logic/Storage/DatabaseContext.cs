@@ -9,8 +9,6 @@ namespace OneBeyondHackathon.Logic.Storage
         {
         }
 
-
-
         public DbSet<QuoteEntity> Quotes { get; set; }
         public DbSet<ImageEntity> Images { get; set; }
     }
