@@ -6,11 +6,11 @@ namespace OneBeyondHackathon.WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ImagesController : ControllerBase
+    public class ImageController : ControllerBase
     {
         private readonly IImageService _imageService;
 
-        public ImagesController(IImageService imageService)
+        public ImageController(IImageService imageService)
         {
             _imageService = imageService;
         }
@@ -19,8 +19,8 @@ namespace OneBeyondHackathon.WebApi.Controllers
         public void Share(Guid id)
             => _imageService.PostToSlack(id);
 
-        [HttpGet("random")]
-        public ImageDTO Get() 
-            => _imageService.GetRandom();
+        [HttpGet]
+        public Task<ImageDTO> GetRandomImageAsync()
+            => _imageService.GetRandomImageAsync();
     }
 }
