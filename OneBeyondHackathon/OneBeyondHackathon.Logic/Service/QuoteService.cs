@@ -7,11 +7,16 @@ namespace OneBeyondHackathon.Logic.Service
     public class QuoteService : IQuoteService
     {
         private readonly DatabaseContext _context;
+        private readonly ILogicAppService _logicAppService;
 
-        public QuoteService(DatabaseContext context)
+        public QuoteService(
+            DatabaseContext context,
+            ILogicAppService logicAppService)
         {
             _context = context;
+            _logicAppService = logicAppService;
         }
+
 
         public async Task<IEnumerable<QuoteDTO>> GetQuotesAsync(int count)
         {
@@ -40,7 +45,7 @@ namespace OneBeyondHackathon.Logic.Service
                 return;
             }
 
-            // TODO Share quote content.
+            await _logicAppService.PostToSlack(quoteContent);
         }
     }
 }
