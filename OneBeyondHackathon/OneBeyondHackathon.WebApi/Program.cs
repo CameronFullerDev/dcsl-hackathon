@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using OneBeyondHackathon.Logic.Service;
+using OneBeyondHackathon.Logic.Storage;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var connectionString = builder.Configuration.GetConnectionString("WebApiDatabase");
-builder.Services.AddDbContext<OneBeyondHackathon.Logic.Storage.DatabaseContext>(x => x.UseSqlServer(connectionString));
+builder.Services.AddDbContext<DatabaseContext>(x => x.UseSqlServer(connectionString));
 
 // Add a service to DI
 builder.Services.AddTransient<IQuoteService, QuoteService>();
