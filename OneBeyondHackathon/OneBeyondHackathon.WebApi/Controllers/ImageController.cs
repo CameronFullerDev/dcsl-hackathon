@@ -17,7 +17,7 @@ namespace OneBeyondHackathon.WebApi.Controllers
 
         [HttpPost("share/{id}")]
         public void Share(Guid id)
-            => _imageService.PostToSlack(id);
+            => _imageService.ShareImageAsync(id);
 
         [HttpGet]
         public Task<ImageDTO?> GetRandomImageAsync()

@@ -17,16 +17,6 @@ namespace OneBeyondHackathon.Logic.Service
             _logicAppService = logicAppService;
         }
 
-        public async Task Share(Guid id)
-        {
-            var image = await _context.Set<ImageEntity>().FirstOrDefaultAsync(image => image.Id == id);
-            if (image == null)
-            {
-                throw new Exception($"Can't find image {id}.");
-            }
-            return _logicAppService.PostToSlack(image.Url);
-        }
-
         public async Task<ImageDTO?> GetRandomImageAsync()
         {
             return await _context.Images
@@ -41,17 +31,16 @@ namespace OneBeyondHackathon.Logic.Service
 
         public async Task ShareImageAsync(Guid id)
         {
-            var imageUrl = await _context.Images
+            var image = await _context.Images
                 .Where(image => image.Id == id)
-                .Select(image => image.Url)
                 .FirstOrDefaultAsync();
 
-            if (string.IsNullOrEmpty(imageUrl))
+            if (image == null)
             {
-                return;
+                throw new Exception($"Can't find image {id}.");
             }
 
-            // TODO Share image url.
+            await _logicAppService.PostToSlack(image.Url);
         }
     }
 }
