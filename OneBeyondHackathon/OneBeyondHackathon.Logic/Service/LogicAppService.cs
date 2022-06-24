@@ -20,15 +20,11 @@ namespace OneBeyondHackathon.Logic.Service
         {
             var body = new { content, url = _webUrl };
             var response = await _httpClient.PostAsync(
-            "",
+            string.Empty,
             new StringContent(
                 JsonConvert.SerializeObject(body),
                 Encoding.UTF8,
                 MediaTypeNames.Application.Json));
-            if (response.StatusCode != HttpStatusCode.OK)
-            {
-                throw new Exception($"Failed to post slack message.");
-            }
         }
     }
 }
