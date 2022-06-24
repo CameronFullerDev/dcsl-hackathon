@@ -11,6 +11,7 @@ builder.Services.AddSwaggerGen();
 
 // Add a service to DI
 builder.Services.AddSingleton<IQuoteService, QuoteService>();
+builder.Services.AddSingleton<IQuoteService, QuoteService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
