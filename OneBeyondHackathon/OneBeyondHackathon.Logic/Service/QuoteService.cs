@@ -16,6 +16,7 @@ namespace OneBeyondHackathon.Logic.Service
         public async Task<IEnumerable<QuoteDto>> GetQuotesAsync(int count)
         {
             return await _context.Quotes
+                .OrderBy(x => Guid.NewGuid())
                 .Take(count)
                 .Select(x => new QuoteDto
                 {
@@ -24,7 +25,6 @@ namespace OneBeyondHackathon.Logic.Service
                     Quote = x.Quote,
                     QuoteDate = x.QuoteDate
                 })
-                .OrderBy(x => Guid.NewGuid())
                 .ToListAsync();
         }
     }
