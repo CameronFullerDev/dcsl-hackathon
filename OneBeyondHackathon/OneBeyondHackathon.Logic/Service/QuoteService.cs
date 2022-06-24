@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using OneBeyondHackathon.Logic.Dto;
 using OneBeyondHackathon.Logic.Storage;
 
@@ -30,14 +31,13 @@ namespace OneBeyondHackathon.Logic.Service
 
         public async Task ShareQuoteAsync(Guid id)
         {
-            var quoteContent = await _context.Quotes
+            var quote = await _context.Quotes
                 .Where(quote => quote.Id == id)
-                .Select(quote => quote.Quote)
                 .FirstOrDefaultAsync();
 
-            if (string.IsNullOrEmpty(quoteContent))
+            if (quote is null)
             {
-                return;
+                throw new Exception($"Can't find image {id}.");
             }
 
             // TODO Share quote content.

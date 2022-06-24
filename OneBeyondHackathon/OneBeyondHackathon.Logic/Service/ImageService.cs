@@ -35,7 +35,7 @@ namespace OneBeyondHackathon.Logic.Service
                 .Where(image => image.Id == id)
                 .FirstOrDefaultAsync();
 
-            if (image == null)
+            if (image is null)
             {
                 throw new Exception($"Can't find image {id}.");
             }
