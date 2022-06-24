@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using OneBeyondHackathon.Logic.Service;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,9 +10,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var connectionString = builder.Configuration.GetConnectionString("WebApiDatabase");
+builder.Services.AddDbContext<OneBeyondHackathon.Logic.Storage.DatabaseContext>(x => x.UseSqlServer(connectionString));
+
 // Add a service to DI
-builder.Services.AddSingleton<IQuoteService, QuoteService>();
-builder.Services.AddSingleton<IQuoteService, QuoteService>();
+builder.Services.AddTransient<IQuoteService, QuoteService>();
+builder.Services.AddTransient<IImageService, IImageService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
