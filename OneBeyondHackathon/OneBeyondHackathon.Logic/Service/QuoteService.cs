@@ -13,12 +13,12 @@ namespace OneBeyondHackathon.Logic.Service
             _context = context;
         }
 
-        public async Task<IEnumerable<QuoteDto>> GetQuotesAsync(int count)
+        public async Task<IEnumerable<QuoteDTO>> GetQuotesAsync(int count)
         {
             return await _context.Quotes
                 .OrderBy(x => Guid.NewGuid())
                 .Take(count)
-                .Select(x => new QuoteDto
+                .Select(x => new QuoteDTO
                 {
                     Id = x.Id,
                     Author = x.Author,

@@ -1,6 +1,6 @@
 ﻿namespace OneBeyondHackathon.Logic.Dto
 {
-    public sealed class QuoteDto
+    public sealed class QuoteDTO
     {
         public Guid Id { get; set; }
         public string Quote { get; set; } = string.Empty;

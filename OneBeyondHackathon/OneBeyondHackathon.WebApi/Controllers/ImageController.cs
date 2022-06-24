@@ -6,11 +6,11 @@ namespace OneBeyondHackathon.WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ImagesController : ControllerBase
+    public class ImageController : ControllerBase
     {
         private readonly IImageService _imageService;
 
-        public ImagesController(IImageService imageService)
+        public ImageController(IImageService imageService)
         {
             _imageService = imageService;
         }

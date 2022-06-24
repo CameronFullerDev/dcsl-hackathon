@@ -4,6 +4,6 @@ namespace OneBeyondHackathon.Logic.Service
 {
     public interface IQuoteService
     {
-        Task<IEnumerable<QuoteDto>> GetQuotesAsync(int count);
+        Task<IEnumerable<QuoteDTO>> GetQuotesAsync(int count);
     }
 }
