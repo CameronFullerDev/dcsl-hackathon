@@ -15,6 +15,10 @@ namespace OneBeyondHackathon.WebApi.Controllers
             _imageService = imageService;
         }
 
+        [HttpPost("share/{id}")]
+        public void Share(Guid id)
+            => _imageService.PostToSlack(id);
+
         [HttpGet("random")]
         public ImageDTO Get() 
             => _imageService.GetRandom();
