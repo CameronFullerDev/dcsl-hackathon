@@ -15,8 +15,8 @@ namespace OneBeyondHackathon.WebApi.Controllers
             _imageService = imageService;
         }
 
-        [HttpGet("random")]
-        public ImageDTO Get() 
-            => _imageService.GetRandom();
+        [HttpGet]
+        public Task<ImageDTO> GetRandomImageAsync()
+            => _imageService.GetRandomImageAsync();
     }
 }
