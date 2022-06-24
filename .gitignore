@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/hackathon/v17
+/.vs
+/OneBeyondHackathon/.vs/OneBeyondHackathon
+/OneBeyondHackathon/OneBeyondHackathon.WebApi/bin/Debug/net6.0
+/OneBeyondHackathon/OneBeyondHackathon.WebApi/obj
