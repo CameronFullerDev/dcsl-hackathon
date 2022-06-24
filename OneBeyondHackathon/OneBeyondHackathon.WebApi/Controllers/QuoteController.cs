@@ -16,7 +16,7 @@ namespace OneBeyondHackathon.WebApi.Controllers
         }
 
         [HttpGet]
-        public Task<IEnumerable<QuoteDto>> GetQuotes(int count = 10)
+        public Task<IEnumerable<QuoteDto>> GetQuotes([FromQuery]int count = 10)
             => _quoteService.GetQuotesAsync(count);
     }
 }

@@ -15,7 +15,7 @@ builder.Services.AddDbContext<OneBeyondHackathon.Logic.Storage.DatabaseContext>(
 
 // Add a service to DI
 builder.Services.AddTransient<IQuoteService, QuoteService>();
-builder.Services.AddTransient<IImageService, IImageService>();
+builder.Services.AddTransient<IImageService, ImageService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

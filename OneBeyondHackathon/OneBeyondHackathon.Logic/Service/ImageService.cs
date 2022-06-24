@@ -2,7 +2,7 @@
 
 namespace OneBeyondHackathon.Logic.Service
 {
-    internal class ImageService : IImageService
+    public sealed class ImageService : IImageService
     {
         private readonly IList<string> _imageUrls = new List<string>
         {
