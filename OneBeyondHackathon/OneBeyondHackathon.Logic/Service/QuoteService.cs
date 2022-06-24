@@ -38,6 +38,7 @@ namespace OneBeyondHackathon.Logic.Service
         {
             var quote = await _context.Quotes
                 .Where(quote => quote.Id == id)
+                .Select(quote => quote.Quote)
                 .FirstOrDefaultAsync();
 
             if (quote is null)
@@ -45,7 +46,7 @@ namespace OneBeyondHackathon.Logic.Service
                 throw new Exception($"Can't find image {id}.");
             }
 
-            await _logicAppService.PostToSlack(quoteContent);
+            await _logicAppService.PostToSlack(quote);
         }
     }
 }
