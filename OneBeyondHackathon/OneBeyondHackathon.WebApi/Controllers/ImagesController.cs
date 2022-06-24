@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OneBeyondHackathon.WebApi.Dto;
+using OneBeyondHackathon.Logic.Dto;
 
 namespace OneBeyondHackathon.WebApi.Controllers
 {

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OneBeyondHackathon.WebApi.Dto;
+using OneBeyondHackathon.Logic.Dto;
+using OneBeyondHackathon.Logic.Service;
 
 namespace OneBeyondHackathon.WebApi.Controllers
 {
@@ -7,41 +8,17 @@ namespace OneBeyondHackathon.WebApi.Controllers
     [Route("[controller]")]
     public class QuoteController : Controller
     {
+        private readonly IQuoteService _quoteService;
 
-        [HttpGet]
-        public QuoteDto GetQuote()
+        public QuoteController(IQuoteService quoteService)
         {
-            var random = new Random();
-            var randomQuote = random.Next(_quotes.Count());
-
-            var quote = _quotes.Skip(randomQuote).First();
-
-            return quote;
+            _quoteService = quoteService;
         }
 
-        private static readonly IEnumerable<QuoteDto> _quotes = new List<QuoteDto>
+        [HttpGet]
+        public async Task<QuoteDto> GetQuote()
         {
-            new QuoteDto
-            {
-                Id = Guid.NewGuid(),
-                Author = "Bob Smith",
-                QuoteDate = DateTime.UtcNow,
-                Quote = "Let's win the hackathon."
-            },
-            new QuoteDto
-            {
-                Id = Guid.NewGuid(),
-                Author = "John Smith",
-                QuoteDate = DateTime.UtcNow,
-                Quote = "Let's win the hackathon."
-            },
-            new QuoteDto
-            {
-                Id = Guid.NewGuid(),
-                Author = "Tim Smith",
-                QuoteDate = DateTime.UtcNow,
-                Quote = "Let's win the hackathon."
-            }
-        };
+            return await _quoteService.GetQuoteAsync();
+        }
     }
 }

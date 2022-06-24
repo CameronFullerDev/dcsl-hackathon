@@ -1,4 +1,4 @@
-﻿namespace OneBeyondHackathon.WebApi.Dto
+﻿namespace OneBeyondHackathon.Logic.Dto
 {
     public sealed record ImageDTO
     {
