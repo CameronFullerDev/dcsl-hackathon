@@ -60,7 +60,6 @@ namespace OneBeyondHackathon.WebApi.Controllers
             "https://images.squarespace-cdn.com/content/v1/5d15594116124000014ec5aa/1650143677541-TOU4CSELOFU1WA2S3TNF/LizFosslienPlan.png",
             "https://images.squarespace-cdn.com/content/v1/5d15594116124000014ec5aa/1650143483794-VXE2AYBY0RGWAFMF8G2W/LizFosslienPrivilege.jpg",
             "https://images.squarespace-cdn.com/content/v1/5d15594116124000014ec5aa/1650143237183-7TRIQZY9CRWWYTW831NT/LizFosslien1.png"
-
         };
 
         [HttpGet("random")]
